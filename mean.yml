@@ -1,0 +1,11 @@
+- hosts: all
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  vars:
+          var_node: /tmp
+  roles:
+          - prerequisites
+          - mongodb
+          - nodejs
+

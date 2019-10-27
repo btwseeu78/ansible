@@ -1,0 +1,21 @@
+---
+# tasks file for mongodb
+- name: Mongodb Importing Public Key
+  apt_key:
+          keyserver: hkp://keyserver.ubuntu.com:80
+          id: EA312927
+- name: MongoDb - Import public Key
+  apt_repository:
+          filename: '/etc/apt/sources.list.d/mongodb-org-3.2.list'
+          repo: 'deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse'
+          state: present
+          update_cache: yes
+- name: MongoDb - Install MongoDb
+  apt:
+          name: mongodb-org
+          state: present
+          update_cache: yes
+- name: MongoDb - Running State
+  service:
+          name: mongod
+          state: started
